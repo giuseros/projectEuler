@@ -1,18 +1,22 @@
-SRCS = $(wildcard *.cpp)
+outdir = ./bin
 
-PROGS = $(patsubst %.cpp,%,$(SRCS))
+dummy_build_folder := $(shell mkdir -p $(outdir))
+
+SRCS = $(wildcard *.cpp)
+PROGS = $(patsubst %.cpp,$(outdir)/%,$(SRCS))
+
 all: target
 debug: target
 
 all: CXXFLAGS += -O3
 debug: CXXFLAGS += -DDEBUG -g
 
-clear:
-	rm $(PROGS)
+clean:
+	rm $(outdir) -rf
 
 
 target: $(PROGS)
 CXXFLAGS += -std=c++11
 
-%: %.cpp
+./bin/%: %.cpp
 	$(CXX) $(CXXFLAGS) -o $@ $<
