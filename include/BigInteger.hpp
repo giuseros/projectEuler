@@ -158,4 +158,3 @@ BigInteger pow(BigInteger const& base, const int exp){
 	return out;
 }
 
-
