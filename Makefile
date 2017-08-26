@@ -19,4 +19,4 @@ target: $(PROGS)
 CXXFLAGS += -std=c++11
 
 ./bin/%: %.cpp
-	$(CXX) $(CXXFLAGS) -o $@ $<
+	$(CXX) $(CXXFLAGS) -I./include -o $@ $<

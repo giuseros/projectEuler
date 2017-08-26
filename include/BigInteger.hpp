@@ -52,7 +52,13 @@ public:
 
    // Ostream operators
    friend std::ostream& operator<<(std::ostream& os, BigInteger const&);
-
+   int getNumDigits(){
+	   int zeros = 0;
+	   for (auto  i =  digits.rbegin(); i!=digits.rend(); i++){
+		   if (*i == 0){zeros++;} else {break;}
+	   }
+	   return digits.size()-zeros;
+   }
 
    BigInteger() { addDigits(0); }
    BigInteger(short x) { addDigits(x); }
